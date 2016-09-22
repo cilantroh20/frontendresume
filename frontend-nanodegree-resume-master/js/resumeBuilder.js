@@ -80,7 +80,7 @@ var education = {
 
 education.display = function() {
     //var for education + appending to the page
-  	for (var school in education.schools) {
+    for (var school in education.schools) {
         $("#education").append(HTMLschoolStart);
 
         var formattedSchName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -94,7 +94,7 @@ education.display = function() {
         $("#education").append(formattedDates);
         $("#education").append(formattedUrl);
     }
-   
+
     //var online courses + appending to the page 
 
     for (var course in education.onlineCourses) {
@@ -115,25 +115,24 @@ education.display = function() {
 //json for work (objects and arrays inside an object)
 var work = {
     "jobs": [{
-            "employer": "Professional Makeup Artisty",
-            "title": "Receptionist",
-            "dates": "October 2015 - Current",
-            "location": "San Francisco, CA",
-            "description": ""
-        }, {
-            "employer": "Starbucks Co.",
-            "title": "Barista/ Cashier",
-            "dates": "October 2013 - February 2015",
-            "location": "San Francisco, CA",
-            "description": ""
-        }, {
-            "employer": "Chipotle",
-            "title": "Cashier",
-            "dates": "July 2013 - October 2013",
-            "location": "San Francisco, CA",
-            "description": ""
-        }
-    ]
+        "employer": "Professional Makeup Artisty",
+        "title": "Receptionist",
+        "dates": "October 2015 - Current",
+        "location": "San Francisco, CA",
+        "description": ""
+    }, {
+        "employer": "Starbucks Co.",
+        "title": "Barista/ Cashier",
+        "dates": "October 2013 - February 2015",
+        "location": "San Francisco, CA",
+        "description": ""
+    }, {
+        "employer": "Chipotle",
+        "title": "Cashier",
+        "dates": "July 2013 - October 2013",
+        "location": "San Francisco, CA",
+        "description": ""
+    }]
 };
 
 work.display = function() {
