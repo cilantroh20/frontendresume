@@ -39,7 +39,6 @@ bio.display = function() {
             var formattedSkill = HTMLskills.replace("%data%", bio.skills[add_skill]);
             $("#skills").append(formattedSkill);
             add_skill = add_skill + 1;
-
         }
     }
     //variables for the object bio
@@ -110,7 +109,6 @@ education.display = function() {
         $("#education").append(formattedTitle);
         $("#education").append(formattedDates);
         $("#education").append(formattedUrl);
-
     }
 };
 
@@ -135,7 +133,6 @@ var work = {
             "location": "San Francisco, CA",
             "description": ""
         }
-
     ]
 };
 
