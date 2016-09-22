@@ -3,16 +3,16 @@ This is empty on purpose! Your code to build the resume will go here.
  */
 /*this is a jquery function that will add info to the html element*/
 /*$("#main").append("celeste duncan"); */
-var name = "Celeste Duncan"
+var name = "Celeste Duncan";
 var formattedName = HTMLheaderName.replace("%data%", name);
 
-var role = "Jr Front End Web Developer"
+var role = "Jr Front End Web Developer";
 var formattedRole = HTMLheaderRole.replace("%data%", role);
 
 //prepend adds data to the top of the page
 //appending the name last so it will show up first
-$("#header").prepend(formattedRole)
-$("#header").prepend(formattedName)
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
 
 var bio = {
     "name": name,
@@ -52,13 +52,13 @@ bio.display = function() {
 
     //topcontacts is an un order list inside header, it places contact next to eachother
     // appending for the object bio
-    $("#topContacts").append(formattedMobile)
-    $("#topContacts").append(formattedEmail)
-    $("#topContacts").append(formattedGit)
+    $("#topContacts").append(formattedMobile);
+    $("#topContacts").append(formattedEmail);
+    $("#topContacts").append(formattedGit);
     $("#topcontacts").append(formattedLocation);
-    $("#bioPic").append(formattedPic)
-    $("#quickMess").append(formattedMessage)
-}
+    $("#bioPic").append(formattedPic);
+    $("#quickMess").append(formattedMessage);
+};
 
 //json 
 var education = {
@@ -77,11 +77,11 @@ var education = {
         "url": "https://www.udacity.com/#"
 
     }]
-}
+};
 
 education.display = function() {
     //var for education + appending to the page
-    for (school in education.schools) {
+  	for (var school in education.schools) {
         $("#education").append(HTMLschoolStart);
 
         var formattedSchName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -95,10 +95,10 @@ education.display = function() {
         $("#education").append(formattedDates);
         $("#education").append(formattedUrl);
     }
-
+   
     //var online courses + appending to the page 
 
-    for (course in education.onlineCourses) {
+    for (var course in education.onlineCourses) {
         $("#education").append(HTMLonlineClasses);
 
         var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].name);
@@ -112,7 +112,7 @@ education.display = function() {
         $("#education").append(formattedUrl);
 
     }
-}
+};
 
 //json for work (objects and arrays inside an object)
 var work = {
@@ -137,10 +137,10 @@ var work = {
         }
 
     ]
-}
+};
 
 work.display = function() {
-    for (job in work.jobs) {
+    for (var job in work.jobs) {
         $("#workExperience").append(HTMLworkStart);
 
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -157,7 +157,7 @@ work.display = function() {
         $(".work-entry:last").append(formattedDates);
         $(".work-entry:last").append(formattedLocation);
     }
-}
+};
 
 var projects = {
     "project": [{
@@ -171,10 +171,10 @@ var projects = {
         "description": "https://github.com/cilantroh20/stage1-makeawebsite",
         "images": "images/aboutmepic.jpg"
     }]
-}
+};
 
 projects.display = function() {
-    for (pro in projects.project) {
+    for (var pro in projects.project) {
         $("#projects").append(HTMLprojectStart);
 
         var formattedTitle = HTMLprojectTitle.replace("%data%", projects.project[pro].title);
@@ -187,7 +187,7 @@ projects.display = function() {
         $(".project-entry:last").append(formattedDescription);
         $(".project-entry:last").append(formattedImages);
     }
-}
+};
 
 bio.display();
 education.display();
