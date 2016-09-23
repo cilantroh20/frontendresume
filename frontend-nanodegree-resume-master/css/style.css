@@ -26,7 +26,7 @@ h6 {
 
 h1 {
     font-size: 40px;
-    color: ##ffffff;
+    color: #ffffff;
     line-height: 48px;
     display: inline;
 }
@@ -66,7 +66,6 @@ h5 {
     color: #00cccc;
     line-height: 16px;
     float: left;
-    spacing: 40%;
 }
 
 .location-text {
@@ -112,17 +111,13 @@ a {
 
 .white-text {
     font-weight: bold;
-    color: #black;
+    color: #000;
 }
 
 .gray {
     background-color: #fff;
     padding-bottom: 10px;
     clear: both;
-}
-
-.dark-gray {
-    background-color: ;
 }
 
 /* TODO: Replace with image later */
