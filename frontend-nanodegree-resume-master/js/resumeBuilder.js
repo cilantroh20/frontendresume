@@ -3,8 +3,8 @@ This is empty on purpose! Your code to build the resume will go here.
  */
 /*this is a jquery function that will add info to the html element*/
 /*$("#main").append("celeste duncan"); */
-var name = "Celeste Duncan";
-var formattedName = HTMLheaderName.replace("%data%", name);
+var r_name = "Celeste Duncan";
+var formattedName = HTMLheaderName.replace("%data%", r_name);
 
 var role = "Jr Front End Web Developer";
 var formattedRole = HTMLheaderRole.replace("%data%", role);
@@ -15,8 +15,6 @@ $("#header").prepend(formattedRole);
 $("#header").prepend(formattedName);
 
 var bio = {
-    "name": name,
-    "role": role,
     "contacts": {
         "mobile_phone": "209-405-3818",
         "email": "celesteduncan21@yahoo.com",
@@ -80,7 +78,8 @@ var education = {
 
 education.display = function() {
     //var for education + appending to the page
-    for (var school in education.schools) {
+    for (var school = 0; school < education.schools.length; school++) {
+        /*for (var school in education.schools) { */
         $("#education").append(HTMLschoolStart);
 
         var formattedSchName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -88,7 +87,7 @@ education.display = function() {
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
         var formattedUrl = HTMLonlineURL.replace("%data%", education.schools[school].url);
 
-        HTMLschoolLocation.replace("%data%", education.schools[school].location);
+
         $("#education").append(formattedSchName);
         $("#education").append(formattedLocation);
         $("#education").append(formattedDates);
@@ -97,18 +96,18 @@ education.display = function() {
 
     //var online courses + appending to the page 
 
-    for (var course in education.onlineCourses) {
+    for (var course = 0; course < education.onlineCourses.length; course++) {
         $("#education").append(HTMLonlineClasses);
 
         var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].name);
         var formattedTitle = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].title);
-        var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
-        var formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+        var formattedDatess = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+        var formattedUrll = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
 
         $("#education").append(formattedName);
         $("#education").append(formattedTitle);
-        $("#education").append(formattedDates);
-        $("#education").append(formattedUrl);
+        $("#education").append(formattedDatess);
+        $("#education").append(formattedUrll);
     }
 };
 
@@ -136,7 +135,7 @@ var work = {
 };
 
 work.display = function() {
-    for (var job in work.jobs) {
+    for (var job = 0; job < work.jobs.length; job++) {
         $("#workExperience").append(HTMLworkStart);
 
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -170,7 +169,7 @@ var projects = {
 };
 
 projects.display = function() {
-    for (var pro in projects.project) {
+    for (var pro = 0; pro < projects.project.length; pro++) {
         $("#projects").append(HTMLprojectStart);
 
         var formattedTitle = HTMLprojectTitle.replace("%data%", projects.project[pro].title);
