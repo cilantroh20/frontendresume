@@ -78,22 +78,21 @@ var education = {
 
 education.display = function() {
     //var for education + appending to the page
-    for (var school = 0; school < education.schools.length; school++) {
+        for (var school = 0; school < education.schools.length; school++) {
         /*for (var school in education.schools) { */
-        $("#education").append(HTMLschoolStart);
+        $("#education").append(HTMLschoolStart); 
 
         var formattedSchName = HTMLschoolName.replace("%data%", education.schools[school].name);
         var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
         var formattedUrl = HTMLonlineURL.replace("%data%", education.schools[school].url);
 
-
         $("#education").append(formattedSchName);
         $("#education").append(formattedLocation);
         $("#education").append(formattedDates);
         $("#education").append(formattedUrl);
     }
-
+    
     //var online courses + appending to the page 
 
     for (var course = 0; course < education.onlineCourses.length; course++) {
@@ -101,13 +100,13 @@ education.display = function() {
 
         var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].name);
         var formattedTitle = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].title);
-        var formattedDatess = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
-        var formattedUrll = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+        var Online_formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+        var Online_formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
 
         $("#education").append(formattedName);
         $("#education").append(formattedTitle);
-        $("#education").append(formattedDatess);
-        $("#education").append(formattedUrll);
+        $("#education").append(Online_formattedDates);
+        $("#education").append(Online_formattedUrl);
     }
 };
 
