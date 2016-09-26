@@ -1,60 +1,62 @@
-/*
-This is empty on purpose! Your code to build the resume will go here.
- */
 /*this is a jquery function that will add info to the html element*/
 /*$("#main").append("celeste duncan"); */
-var r_name = "Celeste Duncan";
-var formattedName = HTMLheaderName.replace("%data%", r_name);
-
-var role = "Jr Front End Web Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-
-//prepend adds data to the top of the page
-//appending the name last so it will show up first
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
 var bio = {
+    "name": "Celeste Duncan",
+    "role": "Jr Front End Web Developer",
     "contacts": {
-        "mobile_phone": "209-405-3818",
+        "mobile": "209-405-3818",
         "email": "celesteduncan21@yahoo.com",
+        "twitter": "celeste@duncan",
         "github": "cilantroh20",
         "location": "Oakley,CA"
     },
-    "pic": "images/me.jpg",
-    "welcomeMess": "Welcome to my resume!",
+    "biopic": "images/me.jpg",
+    "welcomeMessage": "Welcome to my resume!",
     "skills": ["driven", "versatile", "self-efficient"]
 };
 
 bio.display = function() {
     //an if statement + while loop that will go over the skills and append to the webpage
     if (bio.skills.length > 0) {
-        $("#header").append(HTMLskillsStart);
+        $("#skills").append(HTMLskillsStart);
 
 
         var add_skill = 0;
         while (bio.skills.length > add_skill) {
             var formattedSkill = HTMLskills.replace("%data%", bio.skills[add_skill]);
-            $("#skills").append(formattedSkill);
+            $("#skills-h3").append(formattedSkill);
             add_skill = add_skill + 1;
         }
     }
     //variables for the object bio
-    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile_phone);
+    var formattedName = HTMLheaderName.replace("%data%", bio.name);
+    var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+    var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
     var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var formattedTwitt = HTMLtwitter.replace("%data%", bio.contacts.twitter);
     var formattedGit = HTMLgithub.replace("%data%", bio.contacts.github);
     var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-    var formattedPic = HTMLbioPic.replace("%data%", bio.pic);
-    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMess);
+    var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
+    var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
     //topcontacts is an un order list inside header, it places contact next to eachother
     // appending for the object bio
+    $("#header").prepend(formattedRole);
+    $("#header").prepend(formattedName);
     $("#topContacts").append(formattedMobile);
     $("#topContacts").append(formattedEmail);
+    $("#topContacts").append(formattedTwitt);
     $("#topContacts").append(formattedGit);
     $("#topcontacts").append(formattedLocation);
     $("#bioPic").append(formattedPic);
     $("#quickMess").append(formattedMessage);
+
+    //append to the footer of the page
+    $("#footerContacts").append(formattedMobile);
+    $("#footerContacts").append(formattedEmail);
+    $("#footerContacts").append(formattedTwitt);
+    $("#footerContacts").append(formattedGit);
+    $("#footerContacts").append(formattedLocation);
 };
 
 //json 
@@ -63,12 +65,14 @@ var education = {
     "schools": [{
         "name": "Merritt Community College",
         "location": "Oakland, CA",
-        "dates": 2014,
+        "degree": "No degree",
+        "majors": "Just attending school",
+        "dates": "2014",
         "url": "http://www.merritt.edu/wp/"
     }],
 
     "onlineCourses": [{
-        "name": "Udacity",
+        "school": "Udacity",
         "title": "Intro to Programming",
         "dates": "In Progress",
         "url": "https://www.udacity.com/#"
@@ -78,27 +82,30 @@ var education = {
 
 education.display = function() {
     //var for education + appending to the page
-        for (var school = 0; school < education.schools.length; school++) {
+    $("#education").append(HTMLschoolStart);
+    for (var school = 0; school < education.schools.length; school++) {
         /*for (var school in education.schools) { */
-        $("#education").append(HTMLschoolStart); 
 
         var formattedSchName = HTMLschoolName.replace("%data%", education.schools[school].name);
         var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        var formattedMajors = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
         var formattedUrl = HTMLonlineURL.replace("%data%", education.schools[school].url);
 
-        $("#education").append(formattedSchName);
-        $("#education").append(formattedLocation);
-        $("#education").append(formattedDates);
-        $("#education").append(formattedUrl);
+        $(".education-entry:last").append(formattedSchName);
+        $(".education-entry:last").append(formattedLocation);
+        $(".education-entry:last").append(formattedDegree);
+        $(".education-entry:last").append(formattedMajors);
+        $(".education-entry:last").append(formattedDates);
+        $(".education-entry:last").append(formattedUrl);
     }
-    
+
     //var online courses + appending to the page 
 
+    $("#education").append(HTMLonlineClasses);
     for (var course = 0; course < education.onlineCourses.length; course++) {
-        $("#education").append(HTMLonlineClasses);
-
-        var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].name);
+        var formattedName = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].school);
         var formattedTitle = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].title);
         var Online_formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
         var Online_formattedUrl = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
@@ -117,19 +124,19 @@ var work = {
         "title": "Receptionist",
         "dates": "October 2015 - Current",
         "location": "San Francisco, CA",
-        "description": ""
+        "description": "Schedule client appointments, inventory, answer emails."
     }, {
         "employer": "Starbucks Co.",
         "title": "Barista/ Cashier",
         "dates": "October 2013 - February 2015",
         "location": "San Francisco, CA",
-        "description": ""
+        "description": "Make coffee for customers."
     }, {
         "employer": "Chipotle",
         "title": "Cashier",
         "dates": "July 2013 - October 2013",
         "location": "San Francisco, CA",
-        "description": ""
+        "description": "Ring Customers up."
     }]
 };
 
@@ -144,37 +151,38 @@ work.display = function() {
         the helper.js file */
         $(".work-entry:last").append(formattedEmployerTitle);
 
-        //var formattedDescription = HTMLworkDescription.replace("%data%");
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
         var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
         var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
 
+        $(".work-entry:last").append(formattedDescription);
         $(".work-entry:last").append(formattedDates);
         $(".work-entry:last").append(formattedLocation);
     }
 };
 
 var projects = {
-    "project": [{
+    "projects": [{
         "title": "Build a Movie Website",
         "dates": "September 2016",
         "description": "https://github.com/cilantroh20/movieproject",
-        "images": "images/movieweb.jpg"
+        "images": ["images/movieweb.jpg"]
     }, {
         "title": "Build a About You Website",
         "dates": "August 2016",
         "description": "https://github.com/cilantroh20/stage1-makeawebsite",
-        "images": "images/aboutmepic.jpg"
+        "images": ["images/aboutmepic.jpg"]
     }]
 };
 
 projects.display = function() {
-    for (var pro = 0; pro < projects.project.length; pro++) {
+    for (var pro = 0; pro < projects.projects.length; pro++) {
         $("#projects").append(HTMLprojectStart);
 
-        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.project[pro].title);
-        var formattedDates = HTMLprojectDates.replace("%data%", projects.project[pro].dates);
-        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.project[pro].description);
-        var formattedImages = HTMLprojectImage.replace("%data%", projects.project[pro].images);
+        var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[pro].title);
+        var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[pro].dates);
+        var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[pro].description);
+        var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[pro].images);
 
         $(".project-entry:last").append(formattedTitle);
         $(".project-entry:last").append(formattedDates);
