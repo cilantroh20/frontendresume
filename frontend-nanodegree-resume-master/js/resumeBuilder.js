@@ -66,7 +66,7 @@ var education = {
         "name": "Merritt Community College",
         "location": "Oakland, CA",
         "degree": "No degree",
-        "majors": "Just attending school",
+        "majors": ["nothing", "just attending school"],
         "dates": "2014",
         "url": "http://www.merritt.edu/wp/"
     }],
@@ -176,18 +176,22 @@ var projects = {
 };
 
 projects.display = function() {
-    for (var pro = 0; pro < projects.projects.length; pro++) {
+    for (var pro = 0;  pro <  projects.projects.length; pro++) {
         $("#projects").append(HTMLprojectStart);
 
         var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[pro].title);
         var formattedDates = HTMLprojectDates.replace("%data%", projects.projects[pro].dates);
         var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[pro].description);
-        var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[pro].images);
 
+        //a for loop to iterate over the image array inside of projects.projects
+        for (var img =0;  img < projects.projects[pro].images.length; img ++) {
+        //for degugging : console.log(img);
+        var formattedImages = HTMLprojectImage.replace("%data%", projects.projects[pro].images[img]);
+        $(".project-entry:last").append(formattedImages);
+        }
         $(".project-entry:last").append(formattedTitle);
         $(".project-entry:last").append(formattedDates);
         $(".project-entry:last").append(formattedDescription);
-        $(".project-entry:last").append(formattedImages);
     }
 };
 
